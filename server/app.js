@@ -2,10 +2,20 @@ const express = require("express");
 const cors = require("cors");
 const db = require("./database");
 const app = express();
+const path = require("path");
 const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from React app build folder
+app.use(express.static(path.join(__dirname, "../build")));
+
+// Fallback route to serve React frontend for any other route
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../build", "index.html"));
+});
+
 
 app.get("/grid", (req, res) => {
   try {
