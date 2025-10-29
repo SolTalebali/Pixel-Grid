@@ -3,7 +3,8 @@ import "./App.css";
 import PixelGrid from "./PixelGrid";
 import Toolbar from "./Toolbar";
 
-const URL = process.env.BACKEND_URL;
+const URL = process.env.REACT_APP_BACKEND_URL;
+
 
 const App = () => {
   const [selectedColor, setSelectedColor] = useState("black");
